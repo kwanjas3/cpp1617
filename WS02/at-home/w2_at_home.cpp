@@ -28,7 +28,7 @@ int main() {
     int count = 0; // the number of kingdoms in the array
 
     // TODO: declare the pKingdom pointer here (don't forget to initialize it)
-	Kingdom* pKingdom = nullptr;
+    Kingdom* pKingdom = nullptr;
     cout << "==========\n"
         << "Input data\n"
         << "==========\n"
@@ -39,7 +39,7 @@ int main() {
     if (count < 1) return 1;
 
     // TODO: allocate dynamic memory here for the pKingdom pointer
-	pKingdom = new Kingdom[count];
+	 pKingdom = new Kingdom[count];
     for (int i = 0; i < count; ++i) {
         cout << "Kingdom #" << i + 1 << ": " << endl;
         // TODO: add code to accept user input for Kingdom i
@@ -56,7 +56,7 @@ int main() {
 
     // expand the array of Kingdoms by 1 element
     // TODO: allocate dynamic memory for count + 1 Kingdoms
-	Kingdom* eKingdom = new Kingdom[count];
+	Kingdom* eKingdom = new Kingdom[count+1];
     // TODO: copy elements from original array into this newly allocated array
 	for (int i = 0; i < count; i++) {
 		strcpy(eKingdom[i].m_name, pKingdom[i].m_name);
@@ -64,22 +64,17 @@ int main() {
 	}
     // TODO: deallocate the dynamic memory for the original array
 	delete[] pKingdom;
-	pKingdom = nullptr;
     // TODO: copy the address of the newly allocated array into pKingdom pointer
-	*pKingdom = *eKingdom;
+	pKingdom = eKingdom;
     // add the new Kingdom
     cout << "==========\n"
         << "Input data\n"
         << "==========\n"
         << "Kingdom #" << count + 1 << ": " << endl;
-    // TODO: accept input for the new element in the array
-	for (int i = 0; i < count; ++i) {
-		if (pKingdom[i].m_population != 0) {
-		cout << "Kingdom #" << i + 1 << ": " << endl;
-		}
-		// TODO: add code to accept user input for Kingdom i
-		read(pKingdom[i]);
-	}
+      // TODO: accept input for the new element in the array
+		// TODO: add code to accept user input for Kingdom i 
+		read(pKingdom[count]);
+	
     count++;
     cout << "==========\n" << endl;
 
@@ -90,7 +85,7 @@ int main() {
     // TODO: deallocate the dynamic memory here
 	delete[] eKingdom;
 	eKingdom = nullptr;
-
+   pKingdom = nullptr;
     return 0;
 }
 

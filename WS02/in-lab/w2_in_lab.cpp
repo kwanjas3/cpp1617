@@ -29,7 +29,7 @@ int main() {
 	int count = 0; // the number of kingdoms in the array
 
 	// TODO: declare the pKingdom pointer here (don't forget to initialize it)
-	Kingdom* pKingdom = nullptr;
+	//Kingdom* pKingdom = new Kingdom[count];
 	cout << "==========\n"
 		<< "Input data\n"
 		<< "==========\n"
@@ -40,7 +40,7 @@ int main() {
 	if (count < 1) return 1;
 
 	// TODO: allocate dynamic memory here for the pKingdom pointer
-	pKingdom = new Kingdom[count];
+	Kingdom* pKingdom = new Kingdom[count];
 	for (int i = 0; i < count; ++i) {
 		cout << "Kingdom #" << i + 1 << ": " << endl;
 		// TODO: add code to accept user input for Kingdom i
