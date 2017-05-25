@@ -1,0 +1,19 @@
+1. If dynamic memory is not deallocated, the program will begin to leak memory and eventually run out.
+This will crash the program.
+
+2. You need to allocate a new dynamic memory if you are increasing the size of the array because 
+you cannot change the structure of an array once it is created. 
+Therefore, you make a new array of the size you want,
+copy old array into the new array,
+and then delete the old array and unallocate the old dynamic memory it was using.
+
+3. No because it was encapsulated by the kingdom struct and we deleted the whole struct. The character name has a static
+number of bytes allocated for the name which was 32 characters.
+
+4. We use function overloading which allows us to use the same function name as long as it has different arguments.
+C++ allows this because the signature includes the arguments.
+
+5. I learned function overloading and similarities between setting dynamic memory with opening files in C.
+
+QUIZ 2 REFLECTION:
+
