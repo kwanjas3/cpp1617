@@ -142,6 +142,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CRA_Account.cpp" />
+    <ClCompile Include="w3_at_home.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CRA_Account.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

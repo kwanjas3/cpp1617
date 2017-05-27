@@ -1,0 +1,6 @@
+﻿  CRA_Account.cpp
+c:\users\jasoni7\desktop\oop-workshops-master\oop244\oop244\ws03\at-home\cra_account.cpp(11): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\users\jasoni7\desktop\oop-workshops-master\oop244\oop244\ws03\at-home\cra_account.cpp(12): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+  at-home.vcxproj -> C:\Users\Jasoni7\Desktop\OOP-Workshops-master\OOP244\OOP244\WS03\at-home\Debug\at-home.exe
