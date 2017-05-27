@@ -1,0 +1,9 @@
+﻿1>------ Build started: Project: in-lab, Configuration: Debug Win32 ------
+1>  CRA_Account.cpp
+1>c:\users\jason\desktop\oop-workshops-master\ws03\in-lab\cra_account.cpp(9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+1>  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+1>c:\users\jason\desktop\oop-workshops-master\ws03\in-lab\cra_account.cpp(10): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+1>  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+1>  in-lab.vcxproj -> C:\Users\Jason\Desktop\OOP-Workshops-master\WS03\in-lab\Debug\in-lab.exe
+1>  in-lab.vcxproj -> C:\Users\Jason\Desktop\OOP-Workshops-master\WS03\in-lab\Debug\in-lab.pdb (Full PDB)
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
