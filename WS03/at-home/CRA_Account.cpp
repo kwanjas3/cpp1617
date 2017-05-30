@@ -28,14 +28,14 @@ namespace sict {
       int oddsum = 0;
 
       //first digit is farthlest left workin progress
-      int dig1 = (sin - (sin % 100000000)) / 100000000;
-      int dig2 = ((sin - (sin % 10000000)) / 10000000) % 10;
-      int dig3 = ((sin - (sin % 1000000)) / 1000000) % 10;
-      int dig4 = ((sin - (sin % 100000)) / 100000) % 10;
-      int dig5 = ((sin - (sin % 10000)) / 10000) % 10;
-      int dig6 = ((sin - (sin % 1000)) / 1000) % 10;
-      int dig7 = ((sin - (sin % 100)) / 100) % 10;
-      int dig8 = ((sin - (sin % 10)) / 10) % 10;
+      int dig1 = sin / 100000000;
+      int dig2 = (sin % 100000000) / 10000000;
+      int dig3 = (sin % 10000000) / 1000000;
+      int dig4 = (sin % 1000000) / 100000;
+      int dig5 = (sin % 100000) / 10000;
+      int dig6 = (sin % 10000) / 1000;
+      int dig7 = (sin % 1000) / 100 ;
+      int dig8 = (sin % 100) / 10 ;
       int dig9 = (sin % 10);
 
 
