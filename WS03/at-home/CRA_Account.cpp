@@ -71,7 +71,7 @@ namespace sict {
          }
          oddsum = dig1 + dig3 + dig5 + dig7;
          sum = evensum + oddsum;
-         cout << sum << " " << evensum << " " << oddsum << ((sum / 10 + 1) * 10) - sum << endl;
+         
          
          if (((sum / 10 + 1) * 10) - sum != dig9) {
             valid = false;
