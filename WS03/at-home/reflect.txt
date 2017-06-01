@@ -1,16 +1,33 @@
 1) What is the size of each C-style character string that stores a name for the
 account? Why?
-The size of the C-style character string is 
+
+The size of the C-style character string is 40 + 1, the +1 is for the null character
 
 2) Using examples from your own code explain which features of object orientation
 you used.
 
+display//valid query function that is const and public.
+the set function is a mutator/modifier that allows us set the attributes which are
+private.
+Using the set function we are able to modify the private attributes, however we are not able to access m_years as
+that is a completely hidden counter.
+
 3) Your class declares two member functions named set(...). In C, this would
 generate an error. Explain why this is allowed in C++.
 
+C++ takes into the arguments as well as the function prototype for the function signature.
+This allows us to function overload which is not possible in C because
+C does not look at the arguments.
+
+
 4) How do you ensure that the balance/refund displays to 2 decimal places?
 
+cout.setf(ios::fixed);
+cout.precision(2);
+
 5) What do you need to check before storing data for a tax year?
+
+
 
 6) What have you learned during this workshop?
 
