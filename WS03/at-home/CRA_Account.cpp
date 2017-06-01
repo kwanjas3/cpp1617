@@ -8,9 +8,16 @@ namespace sict {
 
    void CRA_Account::set(const char * familyName_, const char * givenName_, int sin_)
    {
+      sin = sin_;
+      if (!isValid()) {
+         familyName[0] = 0;
+         givenName[0] = 0;
+         sin = 0;
+      }
+      else {
       strcpy(familyName, familyName_);
       strcpy(givenName, givenName_);
-      sin = sin_;
+      }
    }
 
    void CRA_Account::set(int year, double balance)
