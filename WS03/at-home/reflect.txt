@@ -27,8 +27,14 @@ cout.precision(2);
 
 5) What do you need to check before storing data for a tax year?
 
-
+Check to see if the SIN Number is valid according to the algorithm.
 
 6) What have you learned during this workshop?
+
+I learned how to organize methods better. 
+I see the power of creating classes that have its own
+methods.
+Empty states and getting a better idea on how to code
+default constructors and destructors.
 
 Quiz Reflection
