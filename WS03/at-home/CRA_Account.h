@@ -15,8 +15,8 @@ namespace sict {
       bool isValid() const;
       void display() const;
    private:
-      char familyName[MAX_NAME_LENGTH];
-      char givenName[MAX_NAME_LENGTH];
+      char familyName[MAX_NAME_LENGTH + 1];
+      char givenName[MAX_NAME_LENGTH + 1];
       int sin;
       int m_year[MAX_YRS] = { 0 };
       double m_balance[MAX_YRS] = { 0 };
