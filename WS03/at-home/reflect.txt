@@ -1,0 +1,17 @@
+1) What is the size of each C-style character string that stores a name for the
+account? Why?
+The size of the C-style character string is 
+
+2) Using examples from your own code explain which features of object orientation
+you used.
+
+3) Your class declares two member functions named set(...). In C, this would
+generate an error. Explain why this is allowed in C++.
+
+4) How do you ensure that the balance/refund displays to 2 decimal places?
+
+5) What do you need to check before storing data for a tax year?
+
+6) What have you learned during this workshop?
+
+Quiz Reflection
