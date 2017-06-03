@@ -8,17 +8,22 @@ using namespace std;
 namespace sict {
    Passenger::Passenger()
    {
-      setEmpty();
-   }
-
-   Passenger::Passenger(char * name, char * destination)
-   {
-      if (name == nullptr || destination == nullptr || name == "" || destination == "") {
+      if (!isEmpty()) {
          setEmpty();
       }
-      else {
-         strcpy(pname, name);
-         strcpy(des, destination);
+   }
+
+   Passenger::Passenger(const char * name, const char * destination)
+   {
+      if (!isEmpty()) {
+
+         if (name == nullptr || destination == nullptr || strlen(name) == 0 || strlen(destination) == 0) {
+            setEmpty();
+         }
+         else {
+            strcpy(pname, name);
+            strcpy(des, destination);
+         }
       }
    }
    bool Passenger::isEmpty() const

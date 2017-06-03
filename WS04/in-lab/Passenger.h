@@ -9,7 +9,7 @@ namespace sict {
       // TODO: implement the default constructor here
       Passenger();
       // TODO: implement the constructor with 2 parameters here
-      Passenger(char* name, char* destination);
+      Passenger(const char* name, const char* destination);
       // TODO: implement isEmpty query here
       bool isEmpty() const;
       // TODO: implement display query here

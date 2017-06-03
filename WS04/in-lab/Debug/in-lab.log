@@ -1,7 +1,8 @@
-﻿  Passenger.cpp
-c:\users\jason\desktop\oop244\ws04\in-lab\passenger.cpp(20): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  w4_in_lab.cpp
+  Passenger.cpp
+c:\users\jasoni7\desktop\oop244\ws04\in-lab\passenger.cpp(24): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-c:\users\jason\desktop\oop244\ws04\in-lab\passenger.cpp(21): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\jasoni7\desktop\oop244\ws04\in-lab\passenger.cpp(25): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-  in-lab.vcxproj -> C:\Users\Jason\Desktop\OOP244\WS04\in-lab\Debug\in-lab.exe
-  in-lab.vcxproj -> C:\Users\Jason\Desktop\OOP244\WS04\in-lab\Debug\in-lab.pdb (Full PDB)
+  Generating Code...
+  in-lab.vcxproj -> C:\Users\Jasoni7\Desktop\OOP244\WS04\in-lab\Debug\in-lab.exe
