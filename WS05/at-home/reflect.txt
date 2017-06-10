@@ -1,0 +1,29 @@
+1.
+the operator + returns the sum of (x + y) 
+the operator += returns the reassignment of x where x = x + y
+since the original object is being modified with the += operator
+We return a reference.
+
+2.
+I used it when returning the reference of the += operator.
+I also used it when creating a temp version of the current object
+in the + operator.
+
+3.
+line 53 and line 57 when you call the (obj + obj).display(); is 
+displaying the result stored in a temp object.
+
+4.
+having functionalized bool checks that were reused more than twice simplified 
+my code alot;
+in particular, using isValid() and isEmpty() saved
+alot of lines and confusion when doing my if statements.
+
+5. I learned how to overload operators and understand the operators
+technically are what you want them to do with the object..
+If for some reason I wanted += Fraction classes to multiply instead; I could
+technically do that for "fun".
+
+----
+
+Quiz Reflection

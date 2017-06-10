@@ -156,9 +156,6 @@ namespace sict {
          temp.denominator = denominator * x.denominator;
          temp.reduce();
       }
-      else {
-         temp.setEmpty();
-      }
       return temp;
    }
 
@@ -190,9 +187,6 @@ namespace sict {
          numerator = (numerator*y.denominator) + (y.numerator*denominator);
          denominator *= y.denominator;
          reduce();
-      }
-      else {
-         setEmpty();
       }
       return *this;
    }
