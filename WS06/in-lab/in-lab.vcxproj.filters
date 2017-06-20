@@ -20,10 +20,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Contact.cpp">
+    <ClCompile Include="w6_in_lab.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="w6_in_lab.cpp">
+    <ClCompile Include="Contact.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

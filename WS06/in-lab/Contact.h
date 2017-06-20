@@ -2,21 +2,22 @@
 #define SICT_CONTACT_H__
 
 namespace sict {
-	const int sizeOfName = 22;
+
+	const int sizeOfName = 20;
+
 	class Contact {
 	private:
-		char name[sizeOfName];
+		char name[sizeOfName + 1];
 		long long* pnum;
 		int sizeNum;
+      void setEmpty();
+      bool isValid(long long) const;
 	public:
 		Contact();
 		Contact(const char* name, const long long* aPhone, const int numOfPhones);
-		~Contact();
-		Contact& operator=(const Contact&);
-		Contact(const Contact&);		
+		~Contact();		
 		bool isEmpty() const;
-		void display() const;
-
+      void display() const;
 	};
 
 }
