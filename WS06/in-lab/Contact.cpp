@@ -27,18 +27,23 @@ namespace sict {
    }
    Contact::Contact()
    {
+      if (!isEmpty()) {
       setEmpty();
+      }
    }
    Contact::Contact(const char* srcname, const long long* aPhone, const int numOfPhones)
    {
       if (srcname != nullptr && strlen(srcname) != 0) {
-         strncpy_s(name, srcname, 19);
+         strncpy_s(name, srcname, sizeOfName - 1);
          pnum = new long long[sizeNum = numOfPhones];
          int count = 0;
          for (int i = 0; i < sizeNum; i++) {
             if (isValid(aPhone[i])) {
-               pnum[count] = aPhone[i];
-               count++;
+               pnum[i] = aPhone[i];
+               //count++;
+            }
+            else {
+               pnum[i] = 0;
             }
          }
       }
@@ -46,16 +51,13 @@ namespace sict {
          setEmpty();
       }
    }
+
    Contact::~Contact()
    {
       delete[] pnum;
    }
 
 
-   bool Contact::isEmpty() const
-   {
-      return (pnum == nullptr && name[0] == 0 && sizeNum == 1);
-   }
    void Contact::display() const
    {
       if (isEmpty()) {

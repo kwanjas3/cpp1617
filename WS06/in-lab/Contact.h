@@ -16,7 +16,10 @@ namespace sict {
 		Contact();
 		Contact(const char* name, const long long* aPhone, const int numOfPhones);
 		~Contact();		
-		bool isEmpty() const;
+      bool isEmpty() const
+      {
+         return (pnum == nullptr && name[0] == 0 && sizeNum == 1);
+      }
       void display() const;
 	};
 
