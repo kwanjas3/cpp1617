@@ -1,0 +1,18 @@
+1. It has to check for self assignment because 
+if you do not, the copy assignment operator will delete the original data,
+try to copy the deleted data to the original data giving you segmentation fault.
+
+2.Classes that use resources need custom constructors and assignment operators to
+manage memory and prevent scenarios where leaks happen. If a class needs memory,
+you can design the constructor and copy assignment to do the necessary steps to
+create the object/copy the object, then get rid of the old data before returning
+the modified object.
+
+3.You can use functions to avoid reusing code.
+
+4.I have learned to be very cautious with dynamic memory management and keep calm and composed
+while debugging.
+
+Quiz Reflection
+----
+not req.

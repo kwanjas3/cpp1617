@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Contact.h"
 #include <cstring>
+#include <string>
 using namespace std;
 
 namespace sict {
@@ -28,24 +29,30 @@ namespace sict {
    Contact::Contact()
    {
       if (!isEmpty()) {
-      setEmpty();
+         setEmpty();
       }
    }
    Contact::Contact(const char* srcname, const long long* aPhone, const int numOfPhones)
    {
       if (srcname != nullptr && strlen(srcname) != 0) {
-         strncpy_s(name, srcname, sizeOfName - 1);
-         pnum = new long long[sizeNum = numOfPhones];
-         int count = 0;
-         for (int i = 0; i < sizeNum; i++) {
-            if (isValid(aPhone[i])) {
-               pnum[i] = aPhone[i];
-               //count++;
-            }
-            else {
-               pnum[i] = 0;
+         if (strlen(srcname)>sizeOfName) {
+            for (int i = 0; i < (sizeOfName - 1) && srcname[i] != NULL; i++) {
+               name[i] = srcname[i];
             }
          }
+         else {
+            strcpy_s(name, sizeOfName, srcname);
+            pnum = new long long[sizeNum = numOfPhones];
+            for (int i = 0; i < sizeNum; i++) {
+               if (isValid(aPhone[i])) {
+                  pnum[i] = aPhone[i];
+               }
+               else {
+                  pnum[i] = 0;
+               }
+            }
+         }
+
       }
       else {
          setEmpty();
