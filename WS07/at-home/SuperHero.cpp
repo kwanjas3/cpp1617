@@ -1,5 +1,6 @@
 #include <iostream>
 #include "SuperHero.h"
+#include "Hero.h"
 using namespace std;
 
 //////////////////////////////////////////////
@@ -7,7 +8,8 @@ using namespace std;
 //
 SuperHero::SuperHero() : Hero()
 {
-    
+   m_superPowerDefendBonus = 0;
+   m_superPowerAttackBonus = 0;
 }  
         
 //////////////////////////////////////////////
@@ -17,8 +19,10 @@ SuperHero::SuperHero( const char* name, int maximumHealth, int attack,
                 int superPowerAttack, int superPowerDefend
         )  : Hero(name, maximumHealth, attack)
 { 
-  
+   m_superPowerAttackBonus = superPowerAttack;
+   m_superPowerDefendBonus = superPowerDefend;
 }
+
 
 
 //////////////////////////////////////////////
@@ -29,6 +33,7 @@ SuperHero::SuperHero( const char* name, int maximumHealth, int attack,
 // add the superpowerAttackBonus to it
 int SuperHero::getAttack() const 
 { 
+   return (m_superPowerAttackBonus + Hero::getAttack());
 }
 
 
@@ -39,6 +44,7 @@ int SuperHero::getAttack() const
 //
 int SuperHero::getDefend() const 
 { 
+   return (m_superPowerDefendBonus);
 }
 
 

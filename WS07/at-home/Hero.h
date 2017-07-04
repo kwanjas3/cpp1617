@@ -15,6 +15,7 @@ class Hero
 public:
   // constructors
     Hero ();
+    void setEmpty();
     Hero (const char name[], int maximumHealth, int attack);
 
     // member functions

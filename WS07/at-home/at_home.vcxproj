@@ -142,13 +142,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="fight.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="SuperHero.cpp" />
     <ClCompile Include="w7_at_home.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="fight.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="SuperHero.h" />
   </ItemGroup>

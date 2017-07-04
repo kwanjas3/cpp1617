@@ -1,5 +1,5 @@
-#ifndef SUPERHERO_H
-#define SUPERHERO_H
+#ifndef SICT_SUPERHERO_H__
+#define SICT_SUPERHERO_H__
 
 #include "Hero.h"
 
@@ -16,7 +16,6 @@ public:
             
             int superPowerAttack, 
             int superPowerDefend);
-
     int getAttack() const; 
     int getDefend() const; 
  };

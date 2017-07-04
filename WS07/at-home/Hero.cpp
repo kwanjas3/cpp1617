@@ -8,13 +8,29 @@ using namespace std;
 // Default constructor
 //
 Hero::Hero () {
+   setEmpty();
 }
-
+void Hero::setEmpty()
+{
+   m_name[0] = 0;
+   m_attack = 0;
+   m_maximumHealth = 0;
+   m_health = m_maximumHealth;
+}
 ///////////////////////////////////////////////////
 // Constructor
 // 
 Hero::Hero (const char name[], int maximumHealth, int attack) 
 {
+   if (!isEmpty()) {
+      strcpy(m_name, name);
+      m_maximumHealth = maximumHealth;
+      m_health = m_maximumHealth;
+      m_attack = attack;
+   }
+   else {
+      setEmpty();
+   }
 }
 
 /////////////////////////////////////////////////////////
@@ -22,6 +38,8 @@ Hero::Hero (const char name[], int maximumHealth, int attack)
 // 
 ostream& operator<<(ostream& out, const Hero& h) 
 {
+   out << h.m_name;
+   return out;
 }
 
 
@@ -32,6 +50,15 @@ ostream& operator<<(ostream& out, const Hero& h)
 //
 bool Hero::isEmpty () const 
 {
+   bool check = false;
+   if (m_name[0] == 0 &&
+      m_attack == 0 &&
+      m_maximumHealth == 0 &&
+      m_health == 0
+      ) {
+      check = true;
+   }
+   return check;
 }
 
 /////////////////////////////////////////////////
@@ -39,11 +66,12 @@ bool Hero::isEmpty () const
 //
 void Hero::respawn() 
 {
+   m_health = m_maximumHealth;
 }
 
 void Hero::deductHealth(int attack) 
 {
- 
+   m_health -= attack;
 }
 
 //////////////////////////////////////////////////////////////////
@@ -53,6 +81,10 @@ void Hero::deductHealth(int attack)
 //
 void applyDamage (Hero& A, Hero& B) 
 {
+   if (A.isAlive() && B.isAlive()) {
+      A.deductHealth(B.getAttack());
+      B.deductHealth(A.getAttack());
+   }
 }
 
 //////////////////////////////////////////////////////////////////
