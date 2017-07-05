@@ -21,17 +21,15 @@ namespace sict{
 		int mon_;
 		int day_;
 		int readErrorCode_;
-      int value()const;
+
 	public:
 		Date();
 		Date(int year, int month, int day);
 		void setEmpty();
-      void setYear(int);
-      void setMonth(int);
-      void setDay(int);
+		bool isValid();
 		bool isEmpty();
 
-
+		int value()const; // already defined
 		int mdays(int mon)const; // already defined
 
 		void errCode(int errorCode);
