@@ -32,7 +32,7 @@ namespace sict{
 		bool isEmpty();
 
 
-		int mdays(int mon)const; // already defined
+		int mdays()const; // already defined
 
 		void errCode(int errorCode);
 		int errCode()const;

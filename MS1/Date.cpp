@@ -61,7 +61,7 @@ namespace sict {
    void Date::setDay(int d)
    {
       day_ = d;
-      if (d < 1 || d > mdays(mon_)) {
+      if (d < 1 || d > mdays()) {
          errCode(DAY_ERROR);
       }
    }
@@ -73,19 +73,17 @@ namespace sict {
          day_ == 0 && readErrorCode_ == NO_ERROR);
    }
 
-   int Date::value() const
-   {
+   int Date::value()const {
       return year_ * 372 + mon_ * 31 + day_;
    }
 
-   int Date::mdays(int mon) const
-   {
+   int Date::mdays()const {
       int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, -1 };
-      //int mon = mon_ >= 1 && mon_ <= 12 ? mon_ : 13;
-      int month = mon;
-      month--;
-      return days[month] + int((month == 1) * ((year_ % 4 == 0) && (year_ % 100 != 0)) || (year_ % 400 == 0));
+      int mon = mon_ >= 1 && mon_ <= 12 ? mon_ : 13;
+      mon--;
+      return days[mon] + int((mon == 1)*((year_ % 4 == 0) && (year_ % 100 != 0)) || (year_ % 400 == 0));
    }
+
 
    void Date::errCode(int errorCode)
    {
@@ -136,7 +134,6 @@ namespace sict {
    {
       char buffer;
       int y, m, d;
-      errCode(NO_ERROR);
 
       istr >> y >> buffer >> m >> buffer >> d;
       
@@ -171,7 +168,7 @@ namespace sict {
 
    std::istream & operator>>(std::istream & istr, Date src)
    {
-      return (src.read(istr));
+      return src.read(istr);
    }
 
 }
