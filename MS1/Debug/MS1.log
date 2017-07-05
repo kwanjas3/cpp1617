@@ -1,27 +1,2 @@
 ﻿  Date.cpp
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.h(46): error C2039: 'istream': is not a member of 'std'
-  c:\users\jkwan34\desktop\oop-project-master\ms1\predefined c++ types (compiler internal)(208): note: see declaration of 'std'
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.h(46): error C2143: syntax error: missing ';' before '&'
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.h(46): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.h(46): error C2238: unexpected token(s) preceding ';'
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.h(47): error C2039: 'ostream': is not a member of 'std'
-  c:\users\jkwan34\desktop\oop-project-master\ms1\predefined c++ types (compiler internal)(208): note: see declaration of 'std'
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.h(47): error C2143: syntax error: missing ';' before '&'
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.h(47): error C2238: unexpected token(s) preceding ';'
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(130): error C2039: 'read': is not a member of 'sict::Date'
-  c:\users\jkwan34\desktop\oop-project-master\ms1\date.h(18): note: see declaration of 'sict::Date'
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(139): error C2065: 'readErrorCode_': undeclared identifier
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(143): error C2065: 'readErrorCode_': undeclared identifier
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(145): error C3861: 'mdays': identifier not found
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(147): error C2065: 'readErrorCode_': undeclared identifier
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(150): error C2065: 'year_': undeclared identifier
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(151): error C2065: 'mon_': undeclared identifier
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(152): error C2065: 'day_': undeclared identifier
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(153): error C2065: 'readErrorCode_': undeclared identifier
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(158): error C2039: 'write': is not a member of 'sict::Date'
-  c:\users\jkwan34\desktop\oop-project-master\ms1\date.h(18): note: see declaration of 'sict::Date'
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(159): error C2270: 'write': modifiers not allowed on nonmember functions
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(160): error C2065: 'year_': undeclared identifier
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(160): error C2065: 'mon_': undeclared identifier
-c:\users\jkwan34\desktop\oop-project-master\ms1\date.cpp(160): error C2065: 'day_': undeclared identifier
+  MS1.vcxproj -> C:\Users\Jasoni7\Desktop\OOP244\MS1\Debug\MS1.exe

@@ -1,3 +1,4 @@
 ﻿  Contact.cpp
+c:\users\jasoni7\desktop\oop244\ws06\in-lab\contact.cpp(36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   in-lab.vcxproj -> C:\Users\Jasoni7\Desktop\OOP244\WS06\in-lab\x64\Debug\in-lab.exe
   in-lab.vcxproj -> C:\Users\Jasoni7\Desktop\OOP244\WS06\in-lab\x64\Debug\in-lab.pdb (Partial PDB)

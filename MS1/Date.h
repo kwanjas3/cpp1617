@@ -21,15 +21,17 @@ namespace sict{
 		int mon_;
 		int day_;
 		int readErrorCode_;
-
+      int value()const;
 	public:
 		Date();
 		Date(int year, int month, int day);
 		void setEmpty();
-		bool isValid();
+      void setYear(int);
+      void setMonth(int);
+      void setDay(int);
 		bool isEmpty();
 
-		int value()const; // already defined
+
 		int mdays(int mon)const; // already defined
 
 		void errCode(int errorCode);
@@ -47,7 +49,8 @@ namespace sict{
 		std::ostream& write(std::ostream& ostr)const;
 	};
 
-
+   std::ostream& operator<<(std::ostream& ostr, Date x);
+   std::istream& operator>>(std::istream& istr, Date x);
 
 
 

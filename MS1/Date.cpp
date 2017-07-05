@@ -12,154 +12,166 @@
 // -----------------------------------------------------------
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <iomanip>
 #include "Date.h"
 #include "general.h"
-#include <iostream>
+
 
 using namespace std;
-namespace sict{
+namespace sict {
+
+   Date::Date()
+   {
+      setEmpty();
+   }
+
+   Date::Date(int year, int month, int day)
+   {
+      year_ = year;
+      mon_ = month;
+      day_ = day;
+      readErrorCode_ = NO_ERROR;
+   }
+
+   void Date::setEmpty()
+   {
+      year_ = 0;
+      mon_ = 0;
+      day_ = 0;
+      readErrorCode_ = NO_ERROR;
+   }
+
+   void Date::setYear(int y)
+   {
+      year_ = y;
+      if (y < MIN_YEAR || y > MAX_YEAR) {
+         errCode(YEAR_ERROR);
+      }
+   }
+
+   void Date::setMonth(int m)
+   {
+      mon_ = m;
+      if (m < 1 || m > 12) {
+         errCode(MON_ERROR);
+      }
+   }
+
+   void Date::setDay(int d)
+   {
+      day_ = d;
+      if (d < 1 || d > mdays(mon_)) {
+         errCode(DAY_ERROR);
+      }
+   }
 
 
+   bool Date::isEmpty()
+   {
+      return (year_ == 0 && mon_ == 0 &&
+         day_ == 0 && readErrorCode_ == NO_ERROR);
+   }
 
+   int Date::value() const
+   {
+      return year_ * 372 + mon_ * 31 + day_;
+   }
 
+   int Date::mdays(int mon) const
+   {
+      int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, -1 };
+      //int mon = mon_ >= 1 && mon_ <= 12 ? mon_ : 13;
+      int month = mon;
+      month--;
+      return days[month] + int((month == 1) * ((year_ % 4 == 0) && (year_ % 100 != 0)) || (year_ % 400 == 0));
+   }
 
+   void Date::errCode(int errorCode)
+   {
+      readErrorCode_ = errorCode;
+   }
 
+   int Date::errCode() const
+   {
+      return readErrorCode_;
+   }
 
-	Date::Date()
-	{
-		setEmpty();
-	}
+   bool Date::bad() const
+   {
+      return (readErrorCode_ != 0);
+   }
 
-	Date::Date(int year, int month, int day)
-	{
-		if (!isEmpty()) {
-			if (isValid()) {
-				year_ = year;
-				mon_ = month;
-				day_ = day;
-				readErrorCode_ = NO_ERROR;
-			}
-			else {
-				setEmpty();
-			}
+   bool Date::operator==(const Date & D) const
+   {
+      return (value() == D.value());
+   }
 
-		}
-		else {
-			setEmpty();
-		}
+   bool Date::operator!=(const Date & D) const
+   {
+      return (value() != D.value());
+   }
 
-	}
+   bool Date::operator<(const Date & D) const
+   {
+      return (value() < D.value());
+   }
 
-	void Date::setEmpty()
-	{
-		year_ = 0;
-		mon_ = 0;
-		day_ = 0;
-		readErrorCode_ = NO_ERROR;
-	}
+   bool Date::operator>(const Date & D) const
+   {
+      return (value() > D.value());
+   }
 
-	bool Date::isValid()
-	{
-		return true;
-	}
+   bool Date::operator<=(const Date & D) const
+   {
+      return (value() <= D.value());
+   }
 
-	bool Date::isEmpty()
-	{
-		return (year_ == 0 && mon_ == 0 &&
-			day_ == 0 && readErrorCode_ == NO_ERROR);
-	}
+   bool Date::operator>=(const Date & D) const
+   {
+      return (value() >= D.value());
+   }
 
-	int Date::value() const
-	{
-		return 256;
-	}
+   std::istream & Date::read(std::istream & istr)
+   {
+      char buffer;
+      int y, m, d;
+      errCode(NO_ERROR);
 
-	int Date::mdays(int mon) const
-	{
-		return 31;
-	}
+      istr >> y >> buffer >> m >> buffer >> d;
+      
+      if (istr.fail()) {
+         errCode(CIN_FAILED);
+      }
+      else 
+      {
+         if (errCode() == NO_ERROR) {
+            setYear(y);
+            setMonth(m);
+            setDay(d);
+         }
+      }
+      return istr;
+   }
 
-	void Date::errCode(int errorCode)
-	{
-		readErrorCode_ = errorCode;
-	}
+   std::ostream & Date::write(std::ostream & ostr) const
+   {
+      ostr << year_ << "/" 
+         << right << setw(2) << setfill('0') 
+         << mon_ << "/" << setw(2) << right << setfill('0') 
+         << day_ << setw(0) << setfill(' ');
 
-	int Date::errCode() const
-	{
-		return (readErrorCode_ != 0);
-	}
+      return ostr;
+   }
 
-	bool Date::bad() const
-	{
-		return false;
-	}
+   std::ostream & operator<<(std::ostream & ostr, Date src)
+   {
+      return src.write(ostr);
+   }
 
-	bool Date::operator==(const Date & D) const
-	{
-		return (year_ == D.year_ &&
-			mon_ == D.mon_ &&
-			day_ == D.day_);
-	}
-
-	bool Date::operator!=(const Date & D) const
-	{
-		return (year_ != D.year_ &&
-			mon_ != D.mon_ &&
-			day_ != D.day_);
-	}
-
-	bool Date::operator<(const Date & D) const
-	{
-		return false; //waiting value function
-	}
-
-	bool Date::operator>(const Date & D) const
-	{
-		return false; //waiting value function
-	}
-
-	bool Date::operator<=(const Date & D) const
-	{
-		return false; //waiting value function
-	}
-
-	bool Date::operator>=(const Date & D) const
-	{
-		return false; //waiting value function
-	}
-
-	std::istream & Date::read(std::istream & istr)
-	{
-		int ty;
-		int tm;
-		int td;
-		istr >> ty;
-		istr >> tm;
-		istr >> td;
-		if (ty > MAX_YEAR || ty < MIN_YEAR) {
-			readErrorCode_ = YEAR_ERROR;
-		}
-		if (tm < 1 || tm > 12)
-		{
-			readErrorCode_ = MON_ERROR;
-		}
-		if (td < 1 || td > mdays(tm))
-		{
-			readErrorCode_ = DAY_ERROR;
-		}
-		else {
-			year_ = ty;
-			mon_ = tm;
-			day_ = td;
-			readErrorCode_ = NO_ERROR;
-		}
-		return istr;
-	}
-
-	std::ostream & Date::write(std::ostream & ostr) const
-	{
-		ostr << year_ << '/' << mon_ << '/' << day_ << '\n';
-		return ostr;
-	}
+   std::istream & operator>>(std::istream & istr, Date src)
+   {
+      return (src.read(istr));
+   }
 
 }

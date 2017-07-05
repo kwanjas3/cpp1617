@@ -34,22 +34,26 @@ namespace sict {
    Contact::Contact(const char* srcname, const long long* aPhone, const int numOfPhones)
    {
       if (srcname != nullptr && strlen(srcname) != 0) {
-         if (strlen(srcname)>sizeOfName) {
+         int incSize = strlen(srcname);
+         if (incSize > sizeOfName) {
             for (int i = 0; i < (sizeOfName - 1) && srcname[i] != NULL; i++) {
                name[i] = srcname[i];
             }
          }
          else {
-            strcpy_s(name, sizeOfName, srcname);
-            pnum = new long long[sizeNum = numOfPhones];
-            for (int i = 0; i < sizeNum; i++) {
-               if (isValid(aPhone[i])) {
-                  pnum[i] = aPhone[i];
-               }
+            strcpy(name, srcname);
+         }
+         pnum = new long long[sizeNum = numOfPhones];
+         for (int i = 0; i < sizeNum; i++) {
+            if (isValid(aPhone[i])) {
+               pnum[i] = aPhone[i];
+            }
+            else {
+               pnum[i] = 0;
             }
          }
-
       }
+
       else {
          setEmpty();
       }
@@ -62,12 +66,14 @@ namespace sict {
    Contact & Contact::operator=(const Contact &x)
    {
       if (this != &x) {
-         strncpy_s(name, x.name, 19);
+         strcpy(name, x.name);
          sizeNum = x.sizeNum;
          delete[] pnum;
          if (x.pnum != nullptr) {
             pnum = new long long[sizeNum];
-            for (int i = 0; i < sizeNum; pnum[i] = x.pnum[i++]);
+            for (int i = 0; i < sizeNum; i++) {
+               pnum[i] = x.pnum[i];
+            }
          }
          else {
             pnum = nullptr;
@@ -79,7 +85,9 @@ namespace sict {
    {
       if (isValid(newnum)) {
          long long* resize = new long long[sizeNum + 1];
-         for (int i = 0; i < sizeNum; resize[i] = pnum[i++]);
+         for (int i = 0; i < sizeNum; i++) {
+            resize[i] = pnum[i];
+         }
          delete[] pnum;
          pnum = resize;
          pnum[sizeNum] = newnum;

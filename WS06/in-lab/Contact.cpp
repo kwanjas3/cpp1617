@@ -28,32 +28,31 @@ namespace sict {
    }
    Contact::Contact()
    {
-      if (!isEmpty()) {
-         setEmpty();
-      }
+      setEmpty();
    }
    Contact::Contact(const char* srcname, const long long* aPhone, const int numOfPhones)
    {
       if (srcname != nullptr && strlen(srcname) != 0) {
-         if (strlen(srcname)>sizeOfName) {
-            for (int i = 0; i < (sizeOfName - 1) && srcname[i] != NULL; i++) {
+         int incSize = strlen(srcname);
+         if (incSize > sizeOfName) {
+            for (int i = 0; i < (sizeOfName - 1) && srcname[i] != 0; i++) {
                name[i] = srcname[i];
             }
          }
          else {
-            strcpy_s(name, sizeOfName, srcname);
-            pnum = new long long[sizeNum = numOfPhones];
-            for (int i = 0; i < sizeNum; i++) {
-               if (isValid(aPhone[i])) {
-                  pnum[i] = aPhone[i];
-               }
-               else {
-                  pnum[i] = 0;
-               }
+            strcpy_s(name, srcname);
+         }
+         pnum = new long long[sizeNum = numOfPhones];
+         for (int i = 0; i < sizeNum; i++) {
+            if (isValid(aPhone[i])) {
+               pnum[i] = aPhone[i];
+            }
+            else {
+               pnum[i] = 0;
             }
          }
-
       }
+
       else {
          setEmpty();
       }
