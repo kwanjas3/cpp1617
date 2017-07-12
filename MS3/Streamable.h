@@ -1,5 +1,7 @@
-#ifndef SICT_STREAMABLE_H__
-#define SICT_STREAMABLE_H__
+#pragma once
+
+//#ifndef SICT_STREAMABLE_H__
+//#define SICT_STREAMABLE_H__ // matrix error comment these out and use pragma once instead
 #include <fstream>
 #include <iostream>
 
@@ -12,5 +14,5 @@ public:
 	virtual std::ostream& write(std::ostream& os, bool linear)const = 0;
 	virtual std::istream& read(std::istream& is) = 0;
 };
-#endif // !SICT_STREAMABLE_H__
+//#endif // !SICT_STREAMABLE_H__
 
