@@ -5,24 +5,28 @@
 
 using namespace std;
 
-namespace ict{
-   
-	class Account{
-		private:
-			double balance; // data member that stores the balance
+namespace sict {
 
-		protected:
-			double getBalance() const; // return the account balance
-			void setBalance( double ); // sets the account balance
+   class Account {
+   private:
+      double balance; // data member that stores the balance
 
-   		public:
-			// TODO: Write a prototype for constructor which initializes balance
-		
-			// TODDO: Write a function prototype for the virtual function credit 
+   protected:
+      double getBalance() const; // return the account balance
+      void setBalance(double); // sets the account balance
+      void setEmpty();
 
-			// TODO: Write a function prototype for the virtual function debit
-
-			// TODO: Write a function prototype for the virtual function display			
+   public:
+      // TODO: Write a prototype for constructor which initializes balance
+      Account();
+      Account(const double);
+      // TODDO: Write a function prototype for the virtual function credit 
+      virtual void credit(const double amt);
+      // TODO: Write a function prototype for the virtual function debit
+      virtual bool debit(const double amt);
+      // TODO: Write a function prototype for the virtual function display		
+      virtual ostream& display(ostream& os) = 0;
+      bool isValid(const double x);
    };
 };
 #endif
