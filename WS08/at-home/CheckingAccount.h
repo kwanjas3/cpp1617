@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace sict{
+namespace ict{
 	class CheckingAccount : public Account {
 		private:
 			double transactionFee;

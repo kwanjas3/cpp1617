@@ -1,0 +1,24 @@
+1. 
+Abstract Class - 
+
+Is a class that cannot be instantiated but can have subclasses.
+For example, an interface class that deals with the way something is displayed
+via virtual functions would be an abstract class.
+
+Concrete Class - something we can use to instantiate objects as is called a concrete class.
+
+2.
+We use a pure virtual function in a base class so that we can reduce code redundancy and
+it allows derived classes to use the same function signature. In big projects we avoid 
+having to use:
+displayParent();
+displaychild1();
+displaychild2();...
+etc.
+
+with a virtual function in the base class
+virtual void display();
+
+the derived class can use the same 
+void display(); signature
+but it will override the parent one.

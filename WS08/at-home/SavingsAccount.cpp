@@ -2,7 +2,7 @@
 
 using namespace std;
 
-namespace sict{
+namespace ict{
    SavingsAccount::SavingsAccount(const double init, const double interest): Account(init)
    {
       if (interest > 0) {

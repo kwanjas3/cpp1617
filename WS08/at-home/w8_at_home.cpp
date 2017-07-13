@@ -12,7 +12,7 @@
 #include "SavingsAccount.h" 
 #include "CheckingAccount.h" 
 
-using namespace sict;
+using namespace ict;
 using namespace std;
 
 int main()

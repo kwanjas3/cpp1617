@@ -24,7 +24,7 @@ namespace sict{
   class SItem :public Product{
   public:
     SItem(const char* theSku, const char * theName):Product(theSku, theName){}
-    SItem(){}
+    SItem() {}
     virtual std::fstream& store(std::fstream& file, bool addNewLine = true)const{
       if (!isEmpty()){
         file.open("ms4.txt", ios::out|ios::app);

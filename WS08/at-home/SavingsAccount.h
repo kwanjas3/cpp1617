@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace sict {
+namespace ict {
    class SavingsAccount : public Account {
    private:
       double interestRate; // interest rate (percentage) 

@@ -23,7 +23,6 @@ namespace sict {
       void display() const;
      
 	};
-
 }
 
 #endif

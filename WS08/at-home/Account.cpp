@@ -2,7 +2,7 @@
 
 using namespace std;
 
-namespace sict {
+namespace ict {
 
    double Account::getBalance() const
    {

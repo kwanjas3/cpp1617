@@ -2,7 +2,7 @@
 
 using namespace std;
 
-namespace sict {
+namespace ict {
 
    // TODO: define CheckingAccount class member functions here  
 
