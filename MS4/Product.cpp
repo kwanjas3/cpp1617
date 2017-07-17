@@ -1,8 +1,8 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstring>
+#include <iostream>
 #include "Product.h"
-
 namespace sict {
    Product::Product()
    {
@@ -11,16 +11,13 @@ namespace sict {
 
    Product::Product(const Product & x)
    {
-      sku(x.sku_);
-      name(x.name_);
-      price(x.price_);
-      taxed(x.taxed_);
-      quantity(quantity_);
-      qtyNeeded(x.qtyNeeded_);
+      name_ = nullptr;
+      *this = x;
    }
 
    Product::Product(const char *x, const char *y)
    {
+      setEmpty();
       sku(x);
       name(y);
    }
@@ -36,8 +33,9 @@ namespace sict {
    }
 
    Product::~Product()
-   {   
-      clearMemory();   
+   {
+      delete[] name_;
+      name_ = nullptr;
    }
 
    void Product::setEmpty()
@@ -45,7 +43,7 @@ namespace sict {
       sku_[0] = 0;
       name_ = nullptr;
       price_ = 0;
-      taxed_ = 0;
+      taxed_ = false;
       quantity_ = 0;
       qtyNeeded_ = 0;
    }
@@ -60,10 +58,6 @@ namespace sict {
          qtyNeeded_ == 0);
    }
 
- 
-
-  
-
    Product& Product::operator=(const Product & x)
    {
       if (this != &x) {
@@ -75,12 +69,6 @@ namespace sict {
          qtyNeeded(x.qtyNeeded_);
       }
       return *this;
-   }
-
-   void Product::clearMemory()
-   {
-      delete[] name_;
-      name_ = nullptr;
    }
 
    bool Product::operator==(const char * sku)
@@ -98,15 +86,9 @@ namespace sict {
       return (quantity_ -= x);
    }
 
-   void Product::sku(const char* x)
+   void Product::sku(const char * x)
    {
       strcpy(sku_, x);
-   }
-
-   void Product::name(const char* x) {
-      clearMemory();
-      name_ = new char[strlen(x)];
-      strcpy(name_, x);
    }
 
    void Product::price(const double x)
@@ -114,7 +96,13 @@ namespace sict {
       price_ = x;
    }
 
-   
+
+   void Product::name(const char* x) {
+      name_ = new char[strlen(x) + 1];
+      if (name_ != nullptr) {
+         strcpy(name_, x);
+      }
+   }
 
    void Product::taxed(const bool x)
    {
@@ -163,21 +151,22 @@ namespace sict {
 
    const double Product::cost() const
    {
-      double cost = 0;
+     /* double cost;
       if (taxed()) {
-         cost = price() * (1 + taxed());
+      cost = price() * (TAX + 1);
       }
-      else {
-         cost = price();
+      else
+      {
+      cost = price();
       }
-      return cost;
+      return cost;*/
+     return taxed() ? price() * (TAX + 1) : price();
    }
 
 
    double operator+=(double & ref, const Product & a)
    {
-      ref += a.price() * a.quantity();
-      return ref;
+      return ref += a.cost() * a.quantity();
    }
 
    std::ostream & operator<<(std::ostream &os, Product& x)

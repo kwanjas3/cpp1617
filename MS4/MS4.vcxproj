@@ -81,8 +81,11 @@
     <ClInclude Include="Streamable.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ms4_tester.cpp" />
+    <ClCompile Include="244_ms4_tester_prof.cpp" />
     <ClCompile Include="Product.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ms4.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
