@@ -1,0 +1,23 @@
+1. My class works even if you are generous and give all my strings more capacity than they need.
+Depending on what functions are called, it can/may use the resize function and allocate just the required size.
+
+If you created a String obj and instantiated it with more capacity than needed, 
+it will work since c strings are null terminated.
+
+However, if it goes through a function which calls the resize function, the excess capacity will get
+scaled down.
+
+2. The difficulty of the lab and debugging it shows just how difficult making foolproof libraries are.
+Given the option, I would use a standard library that has been thoroughly tested. 
+My ideal methodology is going to be attempting to find a good pre-built library.
+Then if it is necessary, overload the functionalities I may need. 
+
+3. The implementation of String allows me to declare Strings depending on the implemented constructors,
+Also long as the constructors are implemented correctly, The string will always be in a safe empty state.
+Also, because the String function uses dynamic memory, our implementation requires us to clean up the memory
+to prevent memory leaks. In our main function, we do not have to worry about it.
+If we were able to use the String class, it would have eliminated having to manage String sizes and just allowed us
+to call prebuilt functions that modify the string as we need it. 
+ 
+
+QUIZ REFLECTION
