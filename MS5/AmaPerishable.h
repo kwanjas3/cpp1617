@@ -11,7 +11,9 @@ namespace sict {
       Date expiry_;
    public:
       AmaPerishable();
+
       const Date& expiry()const;
+
       void expiry(const Date& value);
 
 

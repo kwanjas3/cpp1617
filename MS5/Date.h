@@ -43,11 +43,12 @@ namespace sict {
       bool operator<=(const Date& D)const;
       bool operator>=(const Date& D)const;
 
-      std::istream& read(std::istream& istr);
-      std::ostream& write(std::ostream& ostr)const;
+      virtual std::istream& read(std::istream& istr);
+      virtual std::ostream& write(std::ostream& ostr)const;
+
    };
 
-   std::ostream& operator<<(std::ostream& ostr, Date &x);
+   std::ostream& operator << (std::ostream& ostr, Date &x);
    std::istream& operator >> (std::istream& istr, Date &x);
 
 
