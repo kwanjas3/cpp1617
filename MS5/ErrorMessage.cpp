@@ -39,17 +39,11 @@ namespace sict {
    {
       return (message_ == nullptr);
    }
-   void ErrorMessage::message(const char * value)
-   {
-      clear();
-      message_ = new char[strlen(value) + 1];
-      strcpy(message_, value);
-   }
    const char * ErrorMessage::message() const
    {
       return message_;
    }
-   std::ostream & operator<<(std::ostream & os, ErrorMessage & msg)
+   std::ostream & operator<<(std::ostream & os, const ErrorMessage & msg)
    {
       if (!msg.isClear()) {
          os << msg.message();

@@ -26,10 +26,15 @@ namespace sict {
       virtual ~ErrorMessage();
       void clear();
       bool isClear()const;
-      void message(const char* value);
+      void message(const char* value)
+      {
+         clear();
+         message_ = new char[strlen(value) + 1];
+         strcpy(message_, value);
+      }
       const char* message()const;
    };
-   std::ostream& operator<<(std::ostream&, ErrorMessage&);
+   std::ostream& operator<<(std::ostream&, const ErrorMessage&);
 }
 
 

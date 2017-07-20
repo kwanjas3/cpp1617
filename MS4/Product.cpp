@@ -15,12 +15,7 @@ namespace sict {
       *this = x;
    }
 
-   Product::Product(const char *x, const char *y)
-   {
-      setEmpty();
-      sku(x);
-      name(y);
-   }
+
 
    Product::Product(const char * s, const char * nm, bool tax, double p, int needed)
    {

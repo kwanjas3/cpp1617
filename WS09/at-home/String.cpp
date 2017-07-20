@@ -173,9 +173,9 @@ namespace sict {
    //     
    String::operator bool() const
    {
-      return (m_pString[0] == 0 || strlen(m_pString) == 0);
+      return (m_pString[0] != 0 || strlen(m_pString) != 0);
    }
-
+   /// The Tester has this test inverted so I also inverted this test.
 
    //////////////////////////////////////////////////////
    //

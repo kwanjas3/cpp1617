@@ -48,7 +48,7 @@ namespace sict {
 
    };
 
-   std::ostream& operator << (std::ostream& ostr, Date &x);
+   std::ostream& operator << (std::ostream& ostr, const Date &x);
    std::istream& operator >> (std::istream& istr, Date &x);
 
 

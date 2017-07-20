@@ -17,8 +17,8 @@ namespace sict {
    public:
       Product();
       Product(const Product &x);
-      Product(const char *, const char *); // this was not in the PDF
-      Product(const char* sku, const char* name, bool taxed, double price, int needed);
+    //  Product(const char *, const char *); // this was not in the PDF
+      Product(const char* sku, const char* name, bool taxed =true, double price = 0, int needed = 0);
       ~Product();
 
       void setEmpty();

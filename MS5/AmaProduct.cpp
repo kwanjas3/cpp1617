@@ -1,4 +1,5 @@
 #include <cstring>
+#include <iomanip>
 #include "AmaProduct.h"
 // AmaProduct.cpp
 #define _CRT_SECURE_NO_WARNINGS
@@ -23,19 +24,25 @@ namespace sict {
 
    fstream & AmaProduct::store(fstream & file, bool addNewLine) const
    {
+
       file << fileTag_ << ','
          << sku() << ','
          << name() << ','
          << price() << ','
          << taxed() << ','
+         << quantity() << ','
          << unit() << ','
-         << qtyNeeded()
-         << endl;
-
+         << qtyNeeded();
+         if (addNewLine) {
+         file << endl;
+         }
+         else {
+            file << ',';
+         }
       return file;
    }
 
-   fstream & AmaProduct::load(fstream & file)
+   inline fstream & AmaProduct::load(fstream & file)
    {
       double td;
       int ti;
@@ -52,47 +59,56 @@ namespace sict {
       file >> td >> c; // PRICE
       price(td);
 
-      file >> ti >> c; // TAXED
-      taxed(1);
+      file >> ti >> c; //TAXED
+      taxed(ti);
 
-      file.getline(n, 10 + 1, ','); //UNIT unit size is 10 + 1 for nullchar
+      file >> ti >> c; // quantity
+      quantity(ti);
+
+      file.getline(n, 10 + 1, ','); // UNIT
       unit(n);
 
-      file >> ti; // qtyNeeded
+      file >> ti >> c; //quantityNeeded
       qtyNeeded(ti);
-      file.ignore;
+
+      file.ignore();
 
       return file;
    }
 
    ostream & AmaProduct::write(ostream & os, bool linear) const
    {
-
-      if (linear) {
-         os << os.setf(ios::left) << os.width(MAX_SKU_LEN) << sku() << '|'
-            << os.width(20) << name() << '|'
-            << os.setf(ios::right) << os.width(9) << os.precision(2) << cost() << '|'
-            << os.width(4) << os.precision(0) << quantity() << '|'
-            << os.setf(ios::left) << os.width(10) << unit() << '|'
-            << os.setf(ios::right) << os.width(4) << qtyNeeded() << '|';
+      if (!err_.isClear()) {
+         os << err_.message();
       }
-
       else {
-         if (taxed()) {
-            os << "Sku:: " << sku() << endl
-               << "Name:  " << name() << endl
-               << "Price:  " << price() << endl
-               << "Price after tax:  " << cost() << endl
-               << "Quantity On Hand:  " << quantity() << ' ' << unit() << endl
-               << "Quantity Needed:  " << qtyNeeded();
+         if (linear) {
+            os << setfill(' ') << left << setw(MAX_SKU_LEN)
+               << sku() << '|' <<
+               setw(20) << name() << '|' << right << setw(7) << fixed << showpoint <<
+               setprecision(2) << cost() << '|' <<
+               setw(4) << quantity() << '|' << setw(10) <<
+               left << unit() << '|' << right <<
+               setw(4) << qtyNeeded() << '|';
          }
+
          else {
-            os << "Sku:: " << sku() << endl
-               << "Name:  " << name() << endl
-               << "Price:  " << price() << endl
-               << "Price after tax:  " << "N/A" << endl
-               << "Quantity On Hand:  " << quantity() << ' ' << unit() << endl
-               << "Quantity Needed:  " << qtyNeeded();
+            if (taxed()) {
+               os << "Sku : " << sku() << endl
+                  << "Name : " << name() << endl
+                  << "Price : " << price() << endl
+                  << "Price after tax : " << cost() << endl
+                  << "Quantity On Hand : " << quantity() << ' ' << unit() << endl
+                  << "Quantity Needed : " << qtyNeeded();
+            }
+            else {
+               os << "Sku: " << sku() << endl
+                  << "Name: " << name() << endl
+                  << "Price: " << price() << endl
+                  << "Price after tax: " << "N/A" << endl
+                  << "Quantity On Hand: " << quantity() << ' ' << unit() << endl
+                  << "Quantity Needed: " << qtyNeeded() << endl;
+            }
          }
       }
       return os;
@@ -109,59 +125,73 @@ namespace sict {
 
       if (!is.fail()) {
          err_.clear();
-         cout << "Sku:  ";
+         cout << "Sku: ";
          is >> s;
          sku(s);
-///////////////
-         cout << "Name:  ";
+         ///////////////
+         cout << "Name: ";
          is >> n;
          name(n);
-///////////////
-         cout << "Unit:  ";
+         ///////////////
+         cout << "Unit: ";
          is >> un;
          unit(un);
-///////////////
-         cout << "Taxed? (y/n):  ";
+         ///////////////
+         cout << "Taxed: ";
          is >> yn;
-         is.clear();
-         while (yn != 'y' || yn != 'Y' || yn != 'n' || yn != 'N') {
+         switch (yn) {
+         case 'Y':
+            taxed(true);
+            break;
+         case 'y':
+            taxed(true);
+            break;
+         case 'n':
+            taxed(false);
+            break;
+         case 'N':
+            taxed(false);
+            break;
+         default:
             err_.message("Only (Y)es or (N)o are acceptable");
-            is >> yn;
-         }
-///////////////
-
-         cout << "Price:  ";
-         is >> td;
-         if (is.fail()) {
-            err_.message("Invalid Price Entry");
             is.setstate(ios::failbit);
          }
-         else {
-            price(td);
+         ///////////////
+         if (err_.isClear()) {
+            cout << "Price: ";
+            is >> td;
+            if (is.fail()) {
+               err_.message("Invalid Price Entry");
+               is.setstate(ios::failbit);
+            }
+            else {
+               price(td);
+            }
          }
-////////////////
-         cout << "Quantity On hand:  ";
-         is >> ti;
-         is.clear();
-         if (is.fail()) {
-            err_.message("Invalid Quantity Entry");
-            is.setstate(ios::failbit);
+         ////////////////
+         if (err_.isClear()) {
+            cout << "Quantity On hand: ";
+            is >> ti;
+            if (is.fail()) {
+               err_.message("Invalid Quantity Entry");
+               is.setstate(ios::failbit);
+            }
+            else {
+               quantity(ti);
+            }
          }
-         else {
-            quantity(ti);
+         ////////////////
+         if (err_.isClear()) {
+            cout << "Quantity needed: ";
+            is >> ti;
+            if (is.fail()) {
+               err_.message("Invalid Quantity Needed Entry");
+               is.setstate(ios::failbit);
+            }
+            else {
+               qtyNeeded(ti);
+            }
          }
-////////////////
-         cout << "Quantity needed:  ";
-         is >> ti;
-         is.clear();
-         if (is.fail()) {
-            err_.message("Invalid Quantity Needed Entry");
-            is.setstate(ios::failbit);
-         }
-         else {
-            qtyNeeded(ti);
-         }
-
       }
 
       return is;

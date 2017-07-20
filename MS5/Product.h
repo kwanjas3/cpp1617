@@ -17,9 +17,8 @@ namespace sict {
    public:
       Product();
       Product(const Product &x);
-      Product(const char *, const char *); // this was not in the PDF
-      Product(const char* sku, const char* name, bool taxed, double price, int needed);
-      ~Product();
+      Product(const char* sku, const char* name, bool taxed = true, double price = 0, int needed = 0);
+      virtual ~Product();
 
       void setEmpty();
       bool isEmpty()const;
@@ -31,7 +30,7 @@ namespace sict {
       //setters
       void sku(const char* x);
       void price(const double x);
-      void name(const char *x); 
+      void name(const char *x);
       void taxed(const bool x);
       void quantity(const int x);
       void qtyNeeded(const int x);
@@ -39,11 +38,11 @@ namespace sict {
       //getters
       const char* sku()const;
       const double price()const;
-      const char* name()const  ;
-      const bool taxed()const  ;
-      const int quantity()const ;
+      const char* name()const;
+      const bool taxed()const;
+      const int quantity()const;
       const int qtyNeeded()const;
-      const double cost()const; 
+      const double cost()const;
    };
 
    double operator+=(double& ref, const Product& x);

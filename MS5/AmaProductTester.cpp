@@ -46,6 +46,7 @@ void _pause(){
 
 int main(){
   fstream prdfile("amaPrd.txt", ios::out);
+freopen("input.txt", "r", stdin);
   AmaProduct amaPrd;
   bool ok = true;
   cout << "--AmaProduct test:" << endl;
@@ -154,6 +155,9 @@ int main(){
     cout << "  Yours: " << tprd << endl;
     prdfile.clear();
     prdfile.close();
+    fclose(stdin);
+    cout << tprd.quantity();
+    getchar();
   }
   return 0;
 }

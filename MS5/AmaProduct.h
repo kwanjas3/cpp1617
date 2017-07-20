@@ -17,7 +17,7 @@ namespace sict {
       const char* unit()const;
       void unit(const char* value);
 
-      fstream& AmaProduct::store(fstream& file, bool addNewLine)const;
+      fstream& AmaProduct::store(fstream& file, bool addNewLine = true)const;
       fstream& AmaProduct::load(fstream& file);
       ostream& AmaProduct::write(ostream& os, bool linear)const;
       istream& AmaProduct::read(istream& istr);

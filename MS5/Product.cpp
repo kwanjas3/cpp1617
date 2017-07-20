@@ -15,24 +15,18 @@ namespace sict {
       *this = x;
    }
 
-   Product::Product(const char *x, const char *y)
-   {
-      setEmpty();
-      sku(x);
-      name(y);
-   }
 
    Product::Product(const char * s, const char * nm, bool tax, double p, int needed)
    {
       sku(s);
       name(nm);
-      taxed(tax);
-      price(p);
-      qtyNeeded(needed);
-      quantity(0);
+      taxed_ = tax;
+      price_ = p;
+      qtyNeeded_ = needed;
+      quantity_ = 0;
    }
 
-   Product::~Product()
+  Product::~Product()
    {
       delete[] name_;
       name_ = nullptr;
@@ -88,7 +82,12 @@ namespace sict {
 
    void Product::sku(const char * x)
    {
-      strcpy(sku_, x);
+      if (x) {
+      strncpy(sku_, x, MAX_SKU_LEN);
+      }
+      if (strlen(x) >= MAX_SKU_LEN) {
+         sku_[MAX_SKU_LEN] = 0;
+      }
    }
 
    void Product::price(const double x)
