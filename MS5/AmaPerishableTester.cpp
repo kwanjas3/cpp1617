@@ -46,6 +46,7 @@ void _pause(){
 
 int main(){
   fstream pshfile("psh.txt", ios::out);
+  freopen("amaper.txt", "r", stdin);
   AmaPerishable psh;
   bool ok = true;
   cout << "--AmaPerishable Item test:" << endl;
@@ -106,6 +107,7 @@ int main(){
     cout << "  Yours: " << tpsh << endl;
     pshfile.clear();
     pshfile.close();
+    fclose(stdin);
   }
 
   return 0;

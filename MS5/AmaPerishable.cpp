@@ -38,42 +38,16 @@ namespace sict {
    }
    ostream & AmaPerishable::write(ostream & os, bool linear) const
    {
-      if (!err_.isClear()) {
-         os << err_.message();
+      AmaProduct::write(os, linear);
+      if (linear) {
+         os << expiry();
       }
       else {
-         if (linear) {
-            os << setfill(' ') << left << setw(MAX_SKU_LEN)
-               << sku() << '|' <<
-               setw(20) << name() << '|' << right << setw(7) << fixed << showpoint <<
-               setprecision(2) << cost() << '|' <<
-               setw(4) << quantity() << '|' << setw(10) <<
-               left << unit() << '|' << right <<
-               setw(4) << qtyNeeded() << '|' << expiry();
-         }
-
-         else {
-            if (taxed()) {
-               os << "Sku:: " << sku() << endl
-                  << "Name:  " << name() << endl
-                  << "Price:  " << price() << endl
-                  << "Price after tax:  " << cost() << endl
-                  << "Quantity On Hand:  " << quantity() << ' ' << unit() << endl
-                  << "Quantity Needed:  " << qtyNeeded() << endl
-                  << "Expiry date:  " << expiry() << endl;
-            }
-            else {
-               os << "Sku: " << sku() << endl
-                  << "Name: " << name() << endl
-                  << "Price: " << price() << endl
-                  << "Price after tax: " << "N/A" << endl
-                  << "Quantity On Hand: " << quantity() << ' ' << unit() << endl
-                  << "Quantity Needed: " << qtyNeeded() << endl
-                  << "Expiry date: " << expiry() << endl;
-            }
-         }
-         return os;
+         os << "Expiry Date: " << expiry();
       }
+
+         return os;
+      
    }
    istream & AmaPerishable::read(istream & is)
    {

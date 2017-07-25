@@ -71,7 +71,7 @@ namespace sict {
       file >> ti >> c; //quantityNeeded
       qtyNeeded(ti);
 
-      file.ignore();
+     // file.ignore();
 
       return file;
    }

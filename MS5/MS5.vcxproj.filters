@@ -27,10 +27,10 @@
     <ClCompile Include="ErrorMessage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AmaProductTester.cpp">
+    <ClCompile Include="Date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Date.cpp">
+    <ClCompile Include="AmaPerishableTester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
