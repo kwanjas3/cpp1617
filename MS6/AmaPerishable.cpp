@@ -30,9 +30,8 @@ namespace sict {
    {
       Date temp;
       AmaProduct::load(file);
-      file >> temp;
+      (file >> temp).ignore();
       expiry(temp);
-      file.ignore();
 
       return file;
    }
@@ -63,7 +62,7 @@ namespace sict {
          /////////////////
             cout << "Expiry Date (YYYY/MM/DD) : ";
             is >> temp;
-
+            cin.ignore();
             if (temp.bad()) {
                if (temp.errCode() == CIN_FAILED) {
                   err_.message("Invalid Date Entry");
@@ -78,6 +77,7 @@ namespace sict {
                   err_.message("Invalid Day in Date Entry");
                }
                is.setstate(ios::failbit);
+               return is;
             }
             else {
                expiry(temp);

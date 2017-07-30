@@ -7,7 +7,7 @@
 #include "Streamable.h"
 
 namespace sict {
-   class AidApp : Product {
+   class AidApp {
    private:
       char filename_[256];
       Product* product_[MAX_NO_RECS];
@@ -24,6 +24,7 @@ namespace sict {
       void addQty(const char* sku);
       void addProduct(bool isPerishable);
       int run();
+      void deallocate();
    };
 }
 

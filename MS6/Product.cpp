@@ -72,7 +72,7 @@ namespace sict {
 
    int Product::operator+=(const int x)
    {
-      return (quantity_ += x);
+      return quantity_ += x;
    }
 
    int Product::operator-=(const int x)

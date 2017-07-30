@@ -81,6 +81,7 @@
     <ClCompile Include="AmaProduct.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="ErrorMessage.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Product.cpp" />
   </ItemGroup>
   <ItemGroup>

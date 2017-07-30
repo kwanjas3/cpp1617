@@ -46,9 +46,10 @@ namespace sict {
    {
       double td;
       int ti;
+      int tq;
+      int tn;
       char s[MAX_SKU_LEN];
       char n[MAX_NAME_SIZE];
-      char c; // eat buffer
 
       file.getline(s, MAX_SKU_LEN, ','); // SKU
       sku(s);
@@ -56,22 +57,20 @@ namespace sict {
       file.getline(n, MAX_NAME_SIZE, ',');// NAME
       name(n);
 
-      file >> td >> c; // PRICE
+      (file >> td).ignore(); // PRICE
       price(td);
 
-      file >> ti >> c; //TAXED
+      (file >> ti).ignore(); //TAXED
       taxed(ti);
 
-      file >> ti >> c; // quantity
-      quantity(ti);
+      (file >> tq).ignore(); // quantity
+      quantity(tq);
 
       file.getline(n, 10 + 1, ','); // UNIT
       unit(n);
 
-      file >> ti >> c; //quantityNeeded
-      qtyNeeded(ti);
-
-     // file.ignore();
+      (file >> tn).ignore(); //quantityNeeded
+      qtyNeeded(tn);
 
       return file;
    }
