@@ -15,6 +15,7 @@ namespace sict {
       int noOfProducts_;
    public:
       AidApp(char * file);
+      ~AidApp();
       void pause()const;
       int menu();
       void loadRecs();
