@@ -13,6 +13,8 @@ namespace sict {
       Product* product_[MAX_NO_RECS];
       fstream datafile_; //An fstream instance used to create and access a file.
       int noOfProducts_;
+      AidApp (const AidApp&);                 //Prevent users from using these
+      AidApp operator=(const AidApp&);        //Prevent users from using these
    public:
       AidApp(char * file);
       ~AidApp();

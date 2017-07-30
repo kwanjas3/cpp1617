@@ -132,7 +132,7 @@ namespace sict {
             cout << "Invalid quantity value!" << endl;
          }
          if (q <= amtreq) {
-            product_[index] += q;
+            *product_[index] += q;
 
          }
          else {
@@ -142,7 +142,7 @@ namespace sict {
          //    *product_[index]->quantity += amtreq;
       }
       cout << "Updated!" << endl;
-      //  cin.ignore();
+      cin.ignore();
       saveRecs();
       //  cin.ignore();
    }
@@ -218,15 +218,9 @@ namespace sict {
             cout << "========------ Aid Management Application ------========" << endl << endl;
             cout << "                 ------ Add to quantity of purchased products ------" << endl << endl;
             cout << "Please enter the SKU: ";
-            cin >> st;
-            if (cin.fail()) {
-               std::cout << "SKU invalid!";
-               cin.clear(); // clear error state
-            }
-            else {
-               std::cout << std::endl;
-               addQty(st);
-            }
+            cin >> st;        
+            addQty(st);
+            
 
             pause();
             break;
