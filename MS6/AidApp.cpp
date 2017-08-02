@@ -19,7 +19,7 @@ namespace sict {
    {
       cin.clear();
       cout << "Press Enter to continue...";
-      cin.ignore(1, '\n');
+      cin.ignore(1000, '\n');
    }
 
    int AidApp::menu()
@@ -91,20 +91,19 @@ namespace sict {
    void AidApp::listProducts() const
    {
       double total = 0;
-      cout << "----|-------|--------------------|-------|----|----------|----|----------" << endl <<
-         "Row |SKU    | Item Name          | Cost  | QTY| Unit     |need| Expiry   " << endl <<
-         "----|-------|--------------------|-------|----|----------|----|----------" << endl;
+      cout << endl <<
+         " Row | SKU    | Product Name       | Cost  | QTY| Unit     |Need| Expiry   " << endl <<
+         "-----|--------|--------------------|-------|----|----------|----|----------" << endl;
 
       for (int i = 0; i < noOfProducts_; i++) {
          //product_[i]->write(cout, 1) << endl;
-         cout << right << setw(4) << i + 1 << "|" << *product_[i] << endl;
+         cout << right << setw(4) << i + 1 << " |" << *product_[i] << endl;
          total += *product_[i];
       }
 
-      std::cout << "-------|--------------------|-------|----|----------|----|----------" << std::endl
-         << "       | Total: $"
-         << " " << std::left << std::setw(38) << std::setprecision(2) << std::fixed << total << " |" << std::endl
-         << "       +---------------------------------------------- --+" << endl;
+      std::cout << "---------------------------------------------------------------------------" << std::endl
+         << "Total cost of support: $"
+         << std::setprecision(2) << std::fixed << total << std::endl;
    }
 
    int AidApp::SearchProducts(const char * sku) const
@@ -125,7 +124,7 @@ namespace sict {
          cout << "Not found!" << endl;
       }
       else {
-         product_[index]->write(cout, false) << endl;
+         product_[index]->write(cout, false) << endl << endl;
          cout << "Please enter the number of purchased items: ";
          cin >> q;
          if (cin.fail()) {
@@ -133,18 +132,19 @@ namespace sict {
          }
          if (q <= amtreq) {
             *product_[index] += q;
-
+            cout << endl;
+            cout << "Updated!" << endl;
          }
          else {
+            *product_[index] += amtreq;
             cout << "Too many items: only " << amtreq << "is needed,"
                << " please return the extra " << q - amtreq << " items." << endl;
          }
          //    *product_[index]->quantity += amtreq;
       }
-      cout << "Updated!" << endl;
+
       cin.ignore();
       saveRecs();
-      //  cin.ignore();
    }
 
    void AidApp::addProduct(bool isPerishable)
@@ -182,55 +182,65 @@ namespace sict {
          select = menu();
          switch (select) {
          case 1:
-            cout << "========------ Aid Management Application ------========" << endl << endl;
-            cout << "                    ------ List products ------" << endl << endl;
             listProducts();
+            cout << endl;
             pause();
+            cout << endl;
             break;
          case 2:
-            cout << "========------ Aid Management Application ------========" << endl << endl;
-            cout << "                 ------ Display product ------" << endl << endl;
-            cout << "Enter the Sku: ";
+
+            cout <<endl << "Please enter the SKU: ";
             cin >> stemp;
+            cout << endl;
             index = SearchProducts(stemp);
             if (index == -1) {
                cout << "Not Found!" << endl;
             }
             else {
                product_[index]->write(cout, false);
-               cout << endl;
+               cin.ignore();
+               cout << endl << endl;
             }
+          
             pause();
+            cout << endl;
             break;
          case 3:
-            cout << "========------ Aid Management Application ------========" << endl << endl;
-            cout << "                 ------ Add non-perishable product ------" << endl << endl;
+            cout << endl;
             addProduct(false);
+            cin.ignore();
+            cout << endl;
             pause();
+            cout << endl;
             break;
          case 4:
-            cout << "========------ Aid Management Application ------========" << endl << endl;
-            cout << "                 ------ Add perishable product ------" << endl << endl;
+            cout << endl;
             addProduct(true);
+            cout << endl;
             pause();
+            cout << endl;
             break;
          case 5:
-            cout << "========------ Aid Management Application ------========" << endl << endl;
-            cout << "                 ------ Add to quantity of purchased products ------" << endl << endl;
+            cout << endl;
             cout << "Please enter the SKU: ";
-            cin >> st;        
+            cin >> st;      
+            cout << endl;
             addQty(st);
-            
+            cout << endl;
 
             pause();
             break;
          case 0:
+            cout << endl;
+            cout << endl;
             cout << "Goodbye!!" << endl;
 
             break;
          default:
+            cout << endl;
             cout << "===Invalid Selection, try again.===" << endl;
             pause();
+            cout << endl;
             break;
          }
       } while (select != 0);

@@ -49,17 +49,11 @@ namespace sict {
    }
    istream & AmaPerishable::read(istream & is)
    {
-      double td;
-      int ti;
-      char yn;
-      char s[MAX_SKU_LEN];
-      char un[DISPLAY_LINES + 1]; // 10 + 1
-      char n[MAX_NAME_SIZE];
       Date temp;
-
       AmaProduct::read(is);
       if (!is.fail()) { 
          /////////////////
+            cin.ignore();
             cout << "Expiry Date (YYYY/MM/DD) : ";
             is >> temp;
             cin.ignore();

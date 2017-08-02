@@ -1,8 +1,11 @@
 #include <cstring>
+#include <iostream>
+#include <string>
 #include <iomanip>
 #include "AmaProduct.h"
 // AmaProduct.cpp
 #define _CRT_SECURE_NO_WARNINGS
+using namespace std;
 namespace sict {
    AmaProduct::AmaProduct(const char ft)
    {
@@ -82,7 +85,7 @@ namespace sict {
       }
       else {
          if (linear) {
-            os << setfill(' ') << left << setw(MAX_SKU_LEN)
+            os << setfill(' ') << left << " " << setw(MAX_SKU_LEN)
                << sku() << '|' <<
                setw(20) << name() << '|' << right << setw(7) << fixed << showpoint <<
                setprecision(2) << cost() << '|' <<
@@ -117,9 +120,13 @@ namespace sict {
    {
       double td;
       int ti;
+      int qn;
       char yn;
       char s[MAX_SKU_LEN];
       char un[DISPLAY_LINES + 1]; // 10 + 1
+      string uns;
+      string tns;
+      char tn[21];
       char n[MAX_NAME_SIZE];
 
       if (!is.fail()) {
@@ -129,11 +136,24 @@ namespace sict {
          sku(s);
          ///////////////
          cout << "Name: ";
-         is >> n;
-         name(n);
+         is.ignore();
+         getline(is, tns);
+         if (tns.empty()) {
+            tn[0] = 0;
+         }
+         else {
+            strcpy(tn, tns.c_str());
+         }
+         name(tn);
          ///////////////
          cout << "Unit: ";
-         is >> un;
+         getline(is, uns);
+         if (uns.empty()) {
+            un[0] = 0;
+         }
+         else {
+            strcpy(un, uns.c_str());
+         }
          unit(un);
          ///////////////
          cout << "Taxed: ";
@@ -158,6 +178,7 @@ namespace sict {
          ///////////////
          if (err_.isClear()) {
             cout << "Price: ";
+            cin.ignore();
             is >> td;
             if (is.fail()) {
                err_.message("Invalid Price Entry");
@@ -170,6 +191,7 @@ namespace sict {
          ////////////////
          if (err_.isClear()) {
             cout << "Quantity On hand: ";
+            cin.ignore();
             is >> ti;
             if (is.fail()) {
                err_.message("Invalid Quantity Entry");
@@ -182,13 +204,14 @@ namespace sict {
          ////////////////
          if (err_.isClear()) {
             cout << "Quantity needed: ";
-            is >> ti;
+            is >> qn;
             if (is.fail()) {
                err_.message("Invalid Quantity Needed Entry");
                is.setstate(ios::failbit);
             }
             else {
-               qtyNeeded(ti);
+               qtyNeeded(qn);
+               //cin.ignore();
             }
          }
       }
