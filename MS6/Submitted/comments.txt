@@ -1,0 +1,2 @@
+I used some syntax and logic that could be found @
+www.cplusplus.com/doc/tutorial/pointers
